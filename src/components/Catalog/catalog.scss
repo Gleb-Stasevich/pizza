@@ -1,0 +1,68 @@
+.catalog-title {
+    font-weight: 600;
+    font-size: 36px;
+    padding-top: 50px;
+}
+
+.catalog-block {
+    max-width: 233px;
+    height: 400px;
+    cursor: pointer;
+}
+
+.catalog-item-info {
+    height: 126px;
+}
+
+.catalog-item-info-beverages {
+    height: 110px;
+}
+
+.catalog-item-title {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.catalog-item-composition {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.catalog-item-price {
+    font-weight: 600;
+}
+
+.catalog-item-btn > button {
+    width: 120px;
+    height: 40px;
+    line-height: 24px;
+    color: rgb(209, 87, 0);
+    background-color: rgb(255, 240, 230);
+    border: none;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+}
+
+.catalog-item-btn > button:hover {
+    background-color: rgb(255, 210, 179);
+    transition: all 0.4s ease;
+}
+
+.catalog-item-img > img:hover {
+    transform: translateY(3px);
+    transition: all 0.4s ease;
+}
+
+.catalog-item-img {
+    width: 222px;
+    height: 222px;
+}
+
+.catalog-item-img > img {
+    transition: all 0.4s ease;
+}
+
+.item-description-bottom {
+    height: auto;
+}

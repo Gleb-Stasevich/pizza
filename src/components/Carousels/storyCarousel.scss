@@ -1,0 +1,61 @@
+.story-img:not(:nth-child(5)) {
+    border-radius: 20px;
+    left: 4px;
+    top: 4px;
+    z-index: 1;
+}
+
+.story-wrap {
+    width: 204px;
+    height: 252px;
+    border: 3px solid #ff6900 !important;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.story-wrap:nth-child(5) {
+    border: none !important;
+    border-radius: 0px;
+}
+
+.story_slice {
+    z-index: 2;
+    right: -4px;
+    top: -4px;
+    width: 40px;
+    height: 256px;
+    background: white;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    opacity: 1;
+    z-index: 3;
+    top: 100px;
+}
+
+.carousel-control-next-icon {
+    right: 10px;
+}
+
+.carousel-control-prev {
+    left: -40px;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    width: 14px;
+    height: 24px;
+    background-image: url("../../assets/storyCarousel/angle-icon-right.png");
+}
+
+.carousel-control-prev-icon {
+    transform: rotate(180deg);
+}
+
+.carousel-indicators {
+    display: none;
+}

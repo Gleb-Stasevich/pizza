@@ -1,0 +1,180 @@
+.offcanvas {
+    background-color: #f3f3f7;
+    &__title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    &__sub-title {
+        font-weight: 500;
+        font-size: 14px;
+    }
+}
+
+.orders-list {
+    padding: 0px;
+}
+
+.order {
+    background-color: white;
+
+    &__img {
+        transition: all 0.4s ease;
+    }
+
+    &__img > img {
+        width: 60.8px;
+        height: 60.8px;
+    }
+    &__title {
+        font-weight: 600;
+        line-height: 20px;
+    }
+    &__sub-title {
+        font-size: 12px;
+        line-height: 16px;
+        color: rgb(92, 99, 112);
+    }
+
+    &__price {
+        font-weight: bold;
+    }
+
+    hr {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+.remove-order-img {
+    right: 30px;
+    cursor: pointer;
+}
+
+.counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96px;
+    height: 32px;
+    background-color: rgb(243, 243, 247);
+    border-radius: 25px;
+    transition: all 0.4s ease;
+
+    &__amount {
+        color: rgb(92, 99, 112);
+        user-select: none;
+    }
+
+    &__add,
+    &__remove {
+        opacity: 0.7;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    &__add:hover,
+    &__remove:hover {
+        opacity: 1;
+        transition: all 0.2s ease;
+    }
+
+    &__add {
+        font-size: 22px;
+    }
+}
+
+.show-sauces {
+    right: 0;
+    left: auto !important;
+    width: 399px;
+    height: 390px !important;
+    border-top: none !important;
+    background-color: white;
+}
+
+.causes {
+    &__title {
+        font-weight: 600;
+        font-size: 20px;
+    }
+}
+
+.cause {
+    &__title {
+        line-height: 20px;
+        font-weight: 500;
+    }
+}
+
+.orders__additives_title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.additive-order-block {
+    background: white;
+    width: 80px;
+    text-align: center;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.additive-dodster {
+    width: 240px;
+}
+
+.img-add-causes {
+    margin-top: 1px;
+}
+
+.add-cause {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 96px;
+    height: 32px;
+    background-color: rgb(255, 240, 230);
+    color: rgb(209, 87, 0);
+    border-radius: 25px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.add-cause:hover {
+    background-color: rgb(255, 210, 179);
+    color: rgb(209, 87, 0);
+    transition: all 0.4s ease;
+}
+
+.dark-orders {
+    background: #929294;
+    transition: all 1s ease;
+}
+
+.dark-orders-img {
+    opacity: 0.5;
+    transition: all 1s ease;
+}
+
+.order-half-container-1 {
+    width: 30px !important;
+    height: 60px !important;
+}
+
+.order-half-container-2 {
+    width: 30px !important;
+    height: 72px !important;
+}
+
+.order-half-container-2 > img {
+    top: 14px !important;
+}
+
+.order-half-img {
+    width: 60.8px;
+    height: 60.8px;
+}

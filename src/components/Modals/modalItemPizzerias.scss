@@ -1,0 +1,43 @@
+.modal-pizzerias__citys {
+    font-size: 36px;
+    font-weight: 500;
+    margin-left: 15px;
+    color: black;
+}
+
+.modal-pizzerias__search {
+    input {
+        width: 350px;
+        padding-left: 40px;
+        border: 1px solid rgba(92, 99, 112, 0.32);
+        line-height: 40px;
+        border-radius: 12px;
+        outline: none;
+    }
+    input:focus {
+        border-color: rgb(255, 105, 0);
+    }
+
+    img {
+        left: 8px;
+        top: 32px;
+    }
+}
+
+.modal-item__pizzerias {
+    max-height: 370px;
+
+    .city {
+        width: 328px;
+        height: 28px;
+        cursor: pointer;
+
+        .first-letter {
+            color: rgb(255, 105, 0);
+        }
+
+        .city-name {
+            font-weight: bold;
+        }
+    }
+}

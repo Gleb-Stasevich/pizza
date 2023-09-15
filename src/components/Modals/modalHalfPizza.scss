@@ -1,0 +1,166 @@
+.modal-body-half-pizza {
+    z-index: 1;
+    height: 900px;
+}
+
+.half-pizza__block {
+    width: 143px;
+}
+
+.half-pizza__img > img {
+    width: 143px;
+    height: 143px;
+}
+
+.half-pizza__top-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.half-pizza__price {
+    font-weight: 500;
+    color: rgb(92, 99, 112);
+}
+
+.half-pizza-choosed-left,
+.half-pizza-choosed-right {
+    width: 290px;
+}
+
+.half-pizza-choosed-img {
+    img {
+        width: 68px;
+        height: 68px;
+    }
+}
+
+.empty-pizza {
+    position: absolute;
+    top: 17px;
+    width: 222px;
+    height: 222px;
+    z-index: -1;
+}
+
+.half-pizza-choosed-ingredients {
+    color: rgb(92, 99, 112);
+}
+
+.half-pizza__container {
+    width: 105px;
+    height: 256px;
+    overflow: hidden;
+}
+
+.half-container-2 {
+    transform: rotate(180deg);
+    left: 1px;
+}
+
+.half-container-2 > img {
+    top: 45px;
+}
+
+.choosed-left > .half-pizza__block > .half-pizza__img,
+.choosed-right > .half-pizza__block > .half-pizza__img {
+    border: 1px solid rgb(255, 105, 0);
+    border-radius: 12px;
+}
+
+.half-pizza__img > img {
+    transition: all 0.1s ease;
+}
+
+.choosed-left > .half-pizza__block > .half-pizza__img > img {
+    transform: scale(0.95);
+    transition: all 0.1s ease;
+}
+
+.half-pizza__left-img,
+.half-pizza__right-img {
+    width: 96px;
+    overflow: hidden;
+}
+
+.half-pizza__right-img {
+    margin-left: 32px;
+    transform: rotate(180deg);
+}
+
+.half-pizza__choosed-description {
+    margin-left: 35px;
+}
+
+.half-pizza__choosed-ingreds > button > img {
+    width: auto;
+    height: auto;
+}
+
+.half-pizza__choosed-ingreds > button {
+    font-size: 12px;
+    color: rgb(92, 99, 112);
+}
+
+.choosed-right-desc {
+    margin-left: 10px;
+}
+
+.half-pizza__left,
+.half-pizza__right {
+    border-radius: 16px;
+    box-shadow: rgba(6, 5, 50, 0.24) 0px 1px 2px;
+    padding-bottom: 10px;
+}
+
+.half-dough > label {
+    width: 145px;
+}
+
+.choose-dough-half {
+    top: 26px;
+    width: 140px;
+}
+
+.buy-half > button {
+    width: 290px;
+    border-radius: 25px;
+}
+
+.half-pizza-creator {
+    height: 256px;
+}
+
+.only-left-part {
+    margin-right: 105px;
+}
+
+.no-half-pizza {
+    margin-left: 12px;
+}
+
+.empty-block {
+    height: 92px;
+    border-radius: 16px;
+    box-shadow: rgba(6, 5, 50, 0.24) 0px 1px 2px;
+}
+
+.popover {
+    border-radius: 25px;
+}
+
+.popover-body {
+    background-color: #373535;
+    color: white;
+    border-radius: 25px;
+}
+
+.bs-popover-top > .popover-arrow::before {
+    border-top-color: #373535;
+}
+.bs-popover-top > .popover-arrow::after {
+    border-top-color: inherit;
+}
+
+.popover-arrow {
+    bottom: -8px !important;
+}

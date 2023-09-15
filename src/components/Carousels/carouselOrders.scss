@@ -1,0 +1,82 @@
+.carousel-orders-txt {
+    font-weight: 500;
+}
+
+.ofter-ordered {
+    width: 100vw;
+    transition: all 0.4s ease;
+}
+
+.often-ordered-item {
+    min-width: 260px;
+    width: 260px;
+    height: 112px;
+    box-shadow: rgba(6, 5, 50, 0.15) 0px 4px 22px -6px;
+    cursor: pointer;
+}
+
+.often-ordered-item:nth-child(1) {
+    margin-left: 0px !important;
+}
+
+.often-ordered-name {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.ofter-ordered-price {
+    font-weight: 500;
+}
+
+.carousel-orders > .carousel > .carousel-control-next,
+.carousel-control-prev {
+    top: 100px;
+}
+
+.carousel-orders > .carousel > .carousel-control-next {
+    right: -30px;
+}
+
+.carousel-orders > .carousel > .carousel-control-prev {
+    left: -65px;
+}
+
+.next,
+.prev {
+    opacity: 0.5;
+}
+
+.next-slide {
+    user-select: none;
+    opacity: 0;
+    top: -10px;
+    right: -155px;
+    width: 326px;
+    height: 141px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.prev-slide {
+    display: none !important;
+    user-select: none;
+    opacity: 0;
+    top: -10px;
+    left: -170px;
+    width: 326px;
+    height: 141px;
+    cursor: pointer;
+    transform: rotate(180deg);
+    transition: all 0.4s ease;
+    z-index: 99999;
+}
+
+.next-slide:hover {
+    opacity: 1;
+    transition: all 0.4s ease;
+}
+
+.prev-slide:hover {
+    opacity: 1;
+    transition: all 0.4s ease;
+}
