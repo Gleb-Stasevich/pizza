@@ -1,0 +1,53 @@
+.current_delivery {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: rgb(255, 105, 0);
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.current_delivery:hover {
+    color: rgb(234, 101, 7);
+    transition: all 0.4s ease;
+}
+
+.delivery-span-fw {
+    font-weight: 500;
+}
+
+.star-icon {
+    top: 3.5px;
+    right: 55px;
+}
+
+@media (max-width: 991px) {
+    .star-icon {
+        right: 15px;
+    }
+}
+
+@media (max-width: 767px) {
+    .star-icon {
+        top: 27px;
+        right: 17px;
+    }
+}
+
+@media (max-width: 575px) {
+    .star-icon {
+        top: 4px;
+        left: 100px;
+    }
+
+    .delivery__calls {
+        margin-top: 10px;
+        margin-left: 0px !important;
+    }
+}
+
+@media (max-width: 562px) {
+    .delivery__city {
+        width: 100%;
+    }
+}
