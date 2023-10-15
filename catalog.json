@@ -17,8 +17,7 @@
                     "Маленькая"
                 ],
                 "dough": [
-                    "Традиционное",
-                    "Тонкое"
+                    "Традиционное"
                 ],
                 "ingredients": [
                     "Пикантная пепперони",
@@ -49,13 +48,8 @@
                 "price": 20.99,
                 "img": {
                     "traditional": {
-                        "small": "",
                         "medium": "pizzas/julienne_medium.png",
                         "big": "pizzas/julienne_big.webp"
-                    },
-                    "thin": {
-                        "medium": "",
-                        "big": ""
                     }
                 },
                 "volume": "30 см, традиционное тесто, 640 г",
@@ -101,10 +95,6 @@
                         "small": "",
                         "medium": "pizzas/chief_medium.png",
                         "big": "pizzas/chief_big.webp"
-                    },
-                    "thin": {
-                        "medium": "",
-                        "big": ""
                     }
                 },
                 "volume": "30 см, традиционное тесто, 720 г",
@@ -147,13 +137,8 @@
                 "price": 18.99,
                 "img": {
                     "traditional": {
-                        "small": "",
                         "medium": "pizzas/carbonara_medium.png",
                         "big": "pizzas/carbonara_big.webp"
-                    },
-                    "thin": {
-                        "medium": "",
-                        "big": ""
                     }
                 },
                 "volume": "30 см, традиционное тесто, 590 г",
@@ -196,13 +181,8 @@
                 "price": 22.99,
                 "img": {
                     "traditional": {
-                        "small": "",
                         "medium": "pizzas/meat-mix_medium.png",
                         "big": "pizzas/meat-mix_big.webp"
-                    },
-                    "thin": {
-                        "medium": "",
-                        "big": ""
                     }
                 },
                 "volume": "30 см, традиционное тесто, 560 г",
@@ -243,13 +223,8 @@
                 "price": 18.99,
                 "img": {
                     "traditional": {
-                        "small": "",
                         "medium": "pizzas/burger-pizza_medium.png",
                         "big": "pizzas/burger-pizza_big.webp"
-                    },
-                    "thin": {
-                        "medium": "",
-                        "big": ""
                     }
                 },
                 "volume": "30 см, традиционное тесто, 630 г",
@@ -295,10 +270,6 @@
                         "small": "",
                         "medium": "pizzas/italian-chick_medium.png",
                         "big": "pizzas/italian-chick_big.webp"
-                    },
-                    "thin": {
-                        "medium": "",
-                        "big": ""
                     }
                 },
                 "volume": "30 см, традиционное тесто, 620 г",
@@ -707,6 +678,53 @@
                 "id": 18,
                 "city": "Солигорск",
                 "letter": "С"
+            }
+        ],
+        "stories": [
+            {
+                "id": 1,
+                "total": 2,
+                "imgages": [
+                    "stories-backgrounds/story-1.png",
+                    "sories-backgrounds/story-2.png"
+                ]
+            },
+            {
+                "id": 2,
+                "total": 1,
+                "imgages": [
+                    "stories-backgrounds/story-3.png"
+                ]
+            },
+            {
+                "id": 3,
+                "total": 2,
+                "imgages": [
+                    "stories-backgrounds/story-4.png",
+                    "sories-backgrounds/story-5.png"
+                ]
+            },
+            {
+                "id": 4,
+                "total": 2,
+                "imgages": [
+                    "stories-backgrounds/story-6.png",
+                    "sories-backgrounds/story-7.png"
+                ]
+            },
+            {
+                "id": 5,
+                "total": 1,
+                "imgages": [
+                    "stories-backgrounds/story-8.png"
+                ]
+            },
+            {
+                "id": 6,
+                "total": 1,
+                "imgages": [
+                    "stories-backgrounds/story-9.png"
+                ]
             }
         ]
     }

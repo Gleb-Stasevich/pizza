@@ -20,3 +20,34 @@
     top: 3.5px;
     right: 55px;
 }
+
+@media (max-width: 991px) {
+    .star-icon {
+        right: 15px;
+    }
+}
+
+@media (max-width: 767px) {
+    .star-icon {
+        top: 27px;
+        right: 17px;
+    }
+}
+
+@media (max-width: 575px) {
+    .star-icon {
+        top: 4px;
+        left: 100px;
+    }
+
+    .delivery__calls {
+        margin-top: 10px;
+        margin-left: 0px !important;
+    }
+}
+
+@media (max-width: 562px) {
+    .delivery__city {
+        width: 100%;
+    }
+}

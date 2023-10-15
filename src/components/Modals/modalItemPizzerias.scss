@@ -41,3 +41,75 @@
         }
     }
 }
+
+@media (max-width: 1025px) {
+    .modal-pizzerias > .modal-dialog > .modal-content > .modal-header {
+        right: -45px;
+    }
+}
+
+@media (max-width: 991px) {
+    .modal-pizzerias__citys {
+        h1 {
+            font-size: 25px;
+        }
+    }
+
+    .city {
+        width: 160px !important;
+    }
+
+    .modal-pizzerias {
+        padding-right: 0px !important;
+    }
+}
+
+@media (max-width: 592px) {
+    .modal-pizzerias > .modal-dialog > .modal-content > .modal-header {
+        top: -50px;
+        right: -5px;
+    }
+}
+
+@media (max-width: 520px) {
+    .city {
+        width: 130px !important;
+    }
+}
+
+@media (max-width: 456px) {
+    .modal-pizzerias__header {
+        flex-wrap: wrap;
+    }
+    .modal-pizzerias__citys {
+        padding-top: 10px;
+    }
+    .modal-item__pizzerias {
+        flex-wrap: wrap;
+    }
+    .modal-pizzerias > .modal-dialog > .modal-content > .modal-header {
+        top: 10px;
+        right: 5px;
+        .btn-close {
+            --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23000%27%3e%3cpath d=%27M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z%27/%3e%3c/svg%3e") !important;
+        }
+    }
+
+    .modal-pizzerias__search > input {
+        width: 300px;
+    }
+
+    .modal-pizzerias {
+        padding-bottom: 0px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .modal-pizzerias > .modal-dialog > .modal-content > .modal-header {
+        top: 70px;
+        right: 5px;
+    }
+    .modal-pizzerias__search > input {
+        width: 250px;
+    }
+}

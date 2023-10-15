@@ -1,6 +1,8 @@
+import { TypeCatalogItem } from "../../types/types";
+
 const Snacks = (props: any) => {
 
-    const chooseItem = (item: any) => {
+    const chooseItem = (item: TypeCatalogItem) => {
         props.showModalForAdditives(item);
     }
 
@@ -10,9 +12,9 @@ const Snacks = (props: any) => {
             <div className="catalog-container d-flex flex-wrap justify-content-between align-items-center">
 
                 {
-                    props.snacks.map((item: any) => {
+                    props.snacks.map((item: TypeCatalogItem) => {
                         return (
-                            <div onClick={() => chooseItem(item)} key={item.id} className="catalog-block mt-5">
+                            <div onClick={() => chooseItem(item)} key={item.id} className="catalog-block mx-2 mt-5">
                                 <div className="catalog-item-img">
                                     <img src={item.img} alt={item.title} />
                                 </div>

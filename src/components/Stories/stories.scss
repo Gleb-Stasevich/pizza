@@ -1,0 +1,131 @@
+.stories-background {
+    top: 0px;
+    left: 0px;
+    width: 105%;
+    height: 105%;
+    filter: blur(20px);
+    z-index: 999;
+}
+
+.modal-body-stories {
+    padding: 0px;
+}
+
+.modal-stories > .modal-dialog {
+    width: 357px;
+    height: 551px;
+}
+
+.modal-stories > .modal-dialog > .modal-content {
+    width: auto;
+    margin-top: 30px;
+}
+
+.slider-stories {
+    width: 357px;
+    height: 551px;
+    overflow: hidden;
+}
+
+.progress,
+.progress-stacked {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    width: 337px;
+    --bs-progress-height: 3px;
+    --bs-progress-bg: #c7d1db;
+    --bs-progress-bar-bg: white;
+}
+
+.modal-body-stories > .carousel > .carousel-control-prev {
+    top: 270px;
+    left: -85px;
+}
+
+.modal-body-stories > .carousel > .carousel-control-next {
+    top: 270px;
+    left: 405px;
+}
+
+.modal-body-stories > .carousel > .carousel-control-prev > .carousel-control-prev-icon {
+    background-image: url("./stories-backgrounds/arrow-right-white.png");
+    width: 20px;
+}
+
+.modal-body-stories > .carousel > .carousel-control-next > .carousel-control-next-icon {
+    background-image: url("./stories-backgrounds/arrow-right-white.png");
+    width: 20px;
+}
+
+@media (max-width: 838px) {
+    .modal-stories > .modal-dialog > .modal-content > .modal-header > .btn-close {
+        --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23000%27%3e%3cpath d=%27M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z%27/%3e%3c/svg%3e") !important;
+    }
+    .modal-stories > .modal-dialog > .modal-content > .modal-header {
+        top: 20px;
+    }
+    .modal-stories > .modal-dialog > .modal-content > .modal-header:hover {
+        background-size: 32px;
+    }
+}
+
+@media (max-width: 765px) {
+    .modal-stories > .modal-dialog > .modal-content {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 575px) {
+    .modal-stories > .modal-dialog {
+        margin: auto;
+    }
+
+    .modal-body-stories > .carousel > .carousel-control-prev {
+        left: -45px;
+    }
+
+    .modal-body-stories > .carousel > .carousel-control-next {
+        left: 355px;
+    }
+}
+
+@media (max-width: 458px) {
+    .modal-stories {
+        padding-right: 0px !important;
+    }
+    .carousel-item > img {
+        width: 320px;
+    }
+    .modal-stories > .modal-dialog {
+        width: 320px;
+    }
+
+    .modal-body-stories > .carousel > .carousel-control-prev {
+        left: -15px;
+    }
+
+    .modal-body-stories > .carousel > .carousel-control-next {
+        top: 212px;
+        left: 280px;
+        .carousel-control-next-icon {
+            background-image: url("../Carousels/assetsStories/angle-icon-black.png");
+            width: 16px;
+        }
+    }
+    .progress {
+        left: 0px;
+    }
+}
+
+@media (max-width: 358px) {
+    .carousel-item > img {
+        width: 295px;
+    }
+    .modal-stories > .modal-dialog {
+        width: 295px;
+    }
+    .modal-body-stories > .carousel > .carousel-control-next {
+        left: 255px;
+    }
+}

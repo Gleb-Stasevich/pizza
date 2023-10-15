@@ -1,6 +1,9 @@
+.modal-half-pizza > .modal-dialog > .modal-content {
+    margin-top: 10px;
+}
+
 .modal-body-half-pizza {
     z-index: 1;
-    height: 900px;
 }
 
 .half-pizza__block {
@@ -34,20 +37,12 @@
     }
 }
 
-.empty-pizza {
-    position: absolute;
-    top: 17px;
-    width: 222px;
-    height: 222px;
-    z-index: -1;
-}
-
 .half-pizza-choosed-ingredients {
     color: rgb(92, 99, 112);
 }
 
 .half-pizza__container {
-    width: 105px;
+    width: 111px;
     height: 256px;
     overflow: hidden;
 }
@@ -59,6 +54,44 @@
 
 .half-container-2 > img {
     top: 45px;
+}
+
+.half-left-block,
+.half-right-block {
+    width: 111px;
+    height: 222px;
+    overflow: hidden;
+}
+
+.half-empty-block {
+    width: 111px;
+    height: 222px;
+    overflow: hidden;
+    img {
+        width: 222px;
+        height: 222px;
+    }
+}
+.empty-pizza {
+    width: 222px;
+    height: 222px;
+    z-index: -1;
+}
+
+.half-empty-pizza {
+    position: relative;
+    right: 105px;
+}
+
+.right-empty-block > img {
+    left: 0px;
+}
+
+.half-right-block > img {
+    transform: rotate(180deg);
+    position: relative;
+    top: -11px;
+    right: 110px;
 }
 
 .choosed-left > .half-pizza__block > .half-pizza__img,
@@ -163,4 +196,144 @@
 
 .popover-arrow {
     bottom: -8px !important;
+}
+
+.half-pizza__pizzas {
+    width: 580px;
+}
+
+.half-pizza__add-half {
+    overflow-y: scroll;
+    width: 306px;
+    height: 570px;
+}
+
+@media (max-width: 1040px) {
+    .media-modal-half-close {
+        z-index: 2;
+        top: 10px;
+        right: 25px;
+        .btn-close {
+            --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23000%27%3e%3cpath d=%27M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z%27/%3e%3c/svg%3e") !important;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .modal-half-pizza > .modal-dialog > .modal-content {
+        width: 700px;
+        margin-left: -53px;
+    }
+    .half-pizza__pizzas {
+        width: 230px;
+        height: 500px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        margin: auto;
+    }
+    .half-pizza__add-half {
+        width: 342px;
+    }
+
+    .media-modal-half-close {
+        top: 10px;
+        right: 25px;
+    }
+}
+
+@media (max-width: 765px) {
+    .modal-half-pizza {
+        margin-top: -15px;
+        overflow-y: hidden;
+    }
+}
+
+@media (max-width: 640px) {
+    .modal-half-pizza {
+        overflow-y: scroll;
+    }
+
+    .modal-body-half-pizza {
+        flex-wrap: wrap;
+    }
+    .modal-half-pizza > .modal-dialog > .modal-content {
+        width: 500px;
+        margin-left: auto;
+        height: 1300px;
+    }
+
+    .half-pizza__pizzas {
+        width: 158px;
+    }
+
+    .half-pizza__choose,
+    .half-pizza__add-half {
+        margin: auto;
+    }
+
+    .half-pizza__top-title {
+        text-align: center;
+    }
+
+    .media-modal-half-close {
+        top: 9px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 420px) {
+    .half-pizza__add-half {
+        width: 312px;
+    }
+}
+
+@media (max-width: 356px) {
+    .modal-body-half-pizza {
+        width: 320px;
+    }
+
+    .half-pizza__add-half {
+        width: 312px;
+        .modal-item__inputs {
+            margin-right: 30px;
+        }
+    }
+
+    .half-pizza__left,
+    .half-pizza__right {
+        flex-wrap: wrap;
+    }
+
+    .half-pizza__choosed-description {
+        margin-left: 0px;
+    }
+    .half-pizza__right-img {
+        margin-left: -32px;
+    }
+
+    .half-pizza-choosed-left,
+    .half-pizza-choosed-right {
+        width: 275px;
+    }
+
+    .half-pizza__choosed-ingreds {
+        padding-left: 2px;
+    }
+    .half-pizza__add-half > .modal-item__buy > button {
+        width: 280px;
+    }
+
+    .media-modal-half-close {
+        top: 60px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 340px) {
+    .half-pizza__choosed-ingreds > .close {
+        display: inline;
+    }
+    .half-pizza__add-half > .modal-item__buy > button {
+        width: 270px;
+    }
 }

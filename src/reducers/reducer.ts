@@ -1,11 +1,12 @@
-import { createReducer } from '@reduxjs/toolkit'
-import { TypeReducerState } from '../types/types'
+import { createReducer, current } from '@reduxjs/toolkit'
+import { TypePizzaItem, TypeReducerState } from '../types/types'
 
 import {
     dataFetched,
     dataFetching,
     dataFetcingError,
     UpdateListOrders,
+    UpdateAmountOrder,
     openModalItemConstructor,
     openModalItemAdditiveConstructor,
     closeModalItemConstructor,
@@ -27,7 +28,8 @@ const initialState: TypeReducerState = {
     loadingStatus: 'wait',
     modalItem: null,
     openModalPizza: false,
-    deliveryCity: 'Брест'
+    deliveryCity: 'Брест',
+    stories: []
 }
 
 const reducer = createReducer(initialState, (builder: any) => {
@@ -35,7 +37,6 @@ const reducer = createReducer(initialState, (builder: any) => {
         state.loadingStatus = 'loading';
     })
         .addCase(dataFetched, (state: TypeReducerState, action: any) => {
-            console.log(action);
             state.pizzas = action.payload.pizzas;
             state.snacks = action.payload.snacks;
             state.beverages = action.payload.beverages;
@@ -43,6 +44,7 @@ const reducer = createReducer(initialState, (builder: any) => {
             state.causes = action.payload.causes;
             state.pizzerias = action.payload.pizzerias;
             state.loadingStatus = 'success';
+            state.stories = action.payload.stories;
         })
         .addCase(dataFetcingError, (state: TypeReducerState) => {
             state.loadingStatus = 'error';
@@ -69,6 +71,9 @@ const reducer = createReducer(initialState, (builder: any) => {
         .addCase(UpdateListOrders, (state: TypeReducerState, action: any) => {
             state.orders.push(action.payload);
         })
+        .addCase(UpdateAmountOrder, (state: TypeReducerState, action: any) => {
+            state.orders[action.payload].quantity += 1;
+        })
         .addCase(changeQuantity, (state: TypeReducerState, action: any) => {
             if (action.payload.sign === 'plus') {
                 state.orders[action.payload.findOrderIndex].quantity += 1;
@@ -77,14 +82,34 @@ const reducer = createReducer(initialState, (builder: any) => {
                 }
             } else {
                 state.orders[action.payload.findOrderIndex].quantity -= 1;
+                if (action.payload.isCause) {
+                    state.causes[action.payload.findCauseIndex].quantity -= 1;
+                }
+            }
+            if (action.payload.changeCause) {
+                let index = state.causes.findIndex(cause => cause.title === action.payload.changeCause.title);
+                if (action.payload.sign === 'plus') {
+                    state.causes[index].quantity += 1;
+                } else {
+                    state.causes[index].quantity -= 1;
+                }
             }
         })
         .addCase(removeOrder, (state: TypeReducerState, action: any) => {
             state.orders = state.orders.filter(order => order.id !== action.payload.id);
+            if (action.payload.showCounter) {
+                let index = state.causes.findIndex(cause => cause.title === action.payload.title);
+                state.causes[index].showCounter = false;
+            }
         })
         .addCase(changeShowCounter, (state: TypeReducerState, action: any) => {
-            state.causes[action.payload].showCounter = true;
-            state.orders.push(state.causes[action.payload]);
+            if (Array.isArray(action.payload)) {
+                let index = state.causes.findIndex(cause => cause.title === action.payload[0].title);
+                state.causes[index].showCounter = false;
+            } else {
+                state.causes[action.payload].showCounter = true;
+                state.orders.push(state.causes[action.payload]);
+            }
         })
         .addCase(changeModalItem, (state: TypeReducerState, action: any) => {
             let [change, value, buttonPrice] = action.payload;
@@ -161,6 +186,9 @@ const reducer = createReducer(initialState, (builder: any) => {
                         state.modalItem.volume = state.modalItem.volumes.thin[1];
                     }
                 }
+            } else if (change === 'changeId') {
+                const index = state.orders.findIndex(elem => elem.id === action.payload[1].id);
+                state.orders[index].id = Math.random();
             }
         })
         .addDefaultCase(() => { })

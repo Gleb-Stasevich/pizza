@@ -1,90 +1,105 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+
 import { Col, Modal, Row } from "react-bootstrap";
-import { useState } from "react";
-import empty from './empty.png';
-import closeIngred from '../../assets/icons/close.png';
-import returnIngred from '../../assets/icons/return.png';
-import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 
-import './modalHalfPizza.scss';
-import { BlockList } from "net";
 import { UpdateListOrders } from "../../actions/actions";
 
+import empty from './assets/empty.png';
+import closeIngred from './assets/close.png'
+import returnIngred from './assets/return.png';
+
+import './modalHalfPizza.scss';
+import { TypeHalfPizza, TypePizzaItem } from "../../types/types";
+
 const ModalHalfPizza = (props: any) => {
+
+    const { onHide, show } = props;
 
     let pizzas = useSelector((state: RootState) => state.pizzas);
     let [choosedLeftHalf, setChoosedLeftHalf] = useState<null | any>(null);
     let [choosedRightHalf, setChoosedRightHalf] = useState<null | any>(null);
-    let [choosedDough, setChoosedDough] = useState('Традиционное');
+    let [choosedDough, setChoosedDough] = useState<string>('Традиционное');
 
     const dispatch = useDispatch();
 
-    const addHalf = (e: any, half: any) => {
+    const addHalf = (e: React.MouseEvent<HTMLDivElement>, half: TypePizzaItem) => {
 
-        const currentElem = e.target.closest('.col-lg-4');
-        let pizzasElems = document.querySelectorAll('.col-lg-4');
+        const currentParent = e.target as HTMLElement;
 
-        if (currentElem.classList.contains('choosed-left')) {
-            currentElem.classList.remove('choosed-left');
-            setChoosedLeftHalf(null);
-        } else if (currentElem.classList.contains('choosed-right')) {
-            currentElem.classList.remove('choosed-right');
-            setChoosedRightHalf(null);
-        } else if (choosedLeftHalf && !choosedRightHalf) {
-            currentElem.classList.add('choosed-right');
-            setChoosedRightHalf(half);
-        } else if (choosedRightHalf && !choosedLeftHalf) {
-            currentElem.classList.add('choosed-left'); // циклом убрать?!
-            setChoosedLeftHalf(half);
-        } else if (choosedRightHalf && choosedLeftHalf) {
-            for (let elem of pizzasElems) {
-                if (elem.classList.contains('choosed-left')) {
-                    elem.classList.remove('choosed-left');
-                }
-                if (elem.classList.contains('choosed-right')) {
-                    elem.classList.remove('choosed-right');
-                }
+        const currentElem = currentParent.closest<HTMLDivElement>('.col-lg-4');
+        let pizzasElems = document.querySelectorAll<HTMLDivElement>('.col-lg-4');
+
+        if (currentElem !== null) {
+
+            if (currentElem.classList.contains('choosed-left')) {
+                currentElem.classList.remove('choosed-left');
+                setChoosedLeftHalf(null);
+            } else if (currentElem.classList.contains('choosed-right')) {
+                currentElem.classList.remove('choosed-right');
                 setChoosedRightHalf(null);
+            } else if (choosedLeftHalf && !choosedRightHalf) {
+                currentElem.classList.add('choosed-right');
+                setChoosedRightHalf(half);
+            } else if (choosedRightHalf && !choosedLeftHalf) {
+                currentElem.classList.add('choosed-left');
+                setChoosedLeftHalf(half);
+            } else if (choosedRightHalf && choosedLeftHalf) {
+                for (let elem of pizzasElems) {
+                    if (elem.classList.contains('choosed-left')) {
+                        elem.classList.remove('choosed-left');
+                    }
+                    if (elem.classList.contains('choosed-right')) {
+                        elem.classList.remove('choosed-right');
+                    }
+                    setChoosedRightHalf(null);
+                }
+                currentElem.classList.add('choosed-left');
+                setChoosedLeftHalf(half);
+            } else {
+                currentElem.classList.add('choosed-left');
+                setChoosedLeftHalf(half);
             }
-            currentElem.classList.add('choosed-left');
-            setChoosedLeftHalf(half);
-        } else {
-            currentElem.classList.add('choosed-left');
-            setChoosedLeftHalf(half);
         }
     }
 
-    const removeIngred = (e: any) => {
-        const button = e.target.closest('button');
-        const img = button.querySelector('img');
-        if (img.src === returnIngred) {
-            img.src = closeIngred;
-            button.classList.remove('return');
-            button.classList.add('close');
-            return;
+    const removeIngred = (e: React.MouseEvent<HTMLButtonElement>) => {
+
+        const parent = e.target as HTMLElement;
+
+        const button = parent.closest<HTMLButtonElement>('button');
+        const img = button!.querySelector<HTMLImageElement>('img');
+
+        if (button !== null && img !== null) {
+
+            if (img.src === returnIngred) {
+                img.src = closeIngred;
+                button.classList.remove('return');
+                button.classList.add('close');
+                return;
+            }
+            img.src = returnIngred;
+            button.classList.remove('close');
+            button.classList.add('return');
         }
-        img.src = returnIngred;
-        button.classList.remove('close');
-        button.classList.add('return');
     }
 
-    const changeDough = (e: any) => {
+    const changeDough = (e: React.MouseEvent<HTMLLabelElement>) => {
 
         const label = e.target as HTMLLabelElement;
         const dough = document.querySelector<HTMLDivElement>('.half-dough')!.lastElementChild!.previousElementSibling;
-        if (e.target.textContent === 'Тонкое' && dough!.classList.contains('disable-small-size')) {
+        if (label.textContent === 'Тонкое' && dough!.classList.contains('disable-small-size')) {
             return;
         }
 
-        const chooseItem = document.querySelector('.choose-dough-half') as HTMLDivElement;
-        //@ts-ignore
-        const labels = chooseItem.nextElementSibling.querySelectorAll('label');
+        const chooseItem = document.querySelector<HTMLDivElement>('.choose-dough-half');
+        const labels = chooseItem!.nextElementSibling!.querySelectorAll('label');
         const arrLabels = Array.from(labels);
 
-        let moveChooseItem = '';
+        let moveChooseItem: string = '';
 
         for (let elem of labels) {
             if (elem === label) {
@@ -103,13 +118,16 @@ const ModalHalfPizza = (props: any) => {
     }
 
     const addPizza = () => {
+        props.showAddedMessage(choosedLeftHalf.title + ' + ' + choosedRightHalf.title);
         let ingredsButtons = document.querySelectorAll('.return');
-        let ingreds = [];
+        let ingreds: string[] = [];
         for (let ingred of ingredsButtons) {
-            ingreds.push(ingred.textContent);
+            if (ingred.textContent !== null) {
+                ingreds.push(ingred.textContent);
+            }
         }
 
-        const newPizza = {
+        const newPizza: TypeHalfPizza = {
             id: Math.random(),
             halfPizza: true,
             title: choosedLeftHalf.title + ' + ' + choosedRightHalf.title,
@@ -128,8 +146,6 @@ const ModalHalfPizza = (props: any) => {
         }
 
         ingreds = [];
-
-        //@ts-ignore
         dispatch(UpdateListOrders(newPizza));
     }
 
@@ -138,10 +154,13 @@ const ModalHalfPizza = (props: any) => {
     return (
         <>
             <Modal className="modal-half-pizza"
-                {...props}
+                onHide={() => onHide()}
+                show={show}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered>
+                <Modal.Header className="media-modal-half-close" closeButton>
+                </Modal.Header>
                 <Modal.Body className="modal-body-half-pizza d-flex">
                     <div className="half-pizza__choose">
                         <div className="half-pizza__top-title pb-2">
@@ -149,12 +168,12 @@ const ModalHalfPizza = (props: any) => {
                         </div>
                         <div className="half-pizza__pizzas d-flex flex-wrap">
                             <Row>
-                                {pizzas.map((pizza: any, index: number) => {
+                                {pizzas.map((pizza: TypePizzaItem, index: number) => {
                                     if (index === 0 || index === 1) {
                                         return null
                                     }
                                     return (
-                                        <Col onClick={(e: any) => addHalf(e, pizza)} lg="4">
+                                        <Col key={pizza.id} className="media-half-pizzas" onClick={(e: React.MouseEvent<HTMLDivElement>) => addHalf(e, pizza)} lg="4">
                                             <div className="half-pizza__block text-center mt-1 mb-1">
                                                 <div className="half-pizza__img">
                                                     <img src={pizza.img.traditional.medium} />
@@ -184,17 +203,21 @@ const ModalHalfPizza = (props: any) => {
                                     </div>
                                 </div>
                             ) : choosedLeftHalf !== null ? (
-                                <div className="half-pizza__container only-left-part">
-                                    <img src={choosedLeftHalf.img.traditional.medium} alt="add pizza"></img>
-                                    <img className="empty-pizza" src={empty} alt="add pizza"></img>
+                                <div className="d-flex justify-content-center">
+                                    <div className="half-left-block">
+                                        <img src={choosedLeftHalf.img.traditional.medium} alt="add pizza"></img>
+                                    </div>
+                                    <div className="half-empty-block left-empty-block">
+                                        <img className="half-empty-pizza" src={empty} alt="add pizza"></img>
+                                    </div>
                                 </div>
                             ) : choosedRightHalf !== null ? (
-                                <div className="d-flex">
-                                    <div className="half-pizza__container">
-                                        <img className="empty-pizza" src={empty} alt="add pizza"></img>
+                                <div className="d-flex justify-content-center">
+                                    <div className="half-empty-block right-empty-block">
+                                        <img className="half-empty-pizza" src={empty} alt="add pizza"></img>
                                     </div>
-                                    <div className="half-pizza__container half-container-2 position-relative">
-                                        <img className="position-absolute" src={choosedRightHalf.img.traditional.medium} alt="add pizza"></img>
+                                    <div className="half-right-block">
+                                        <img src={choosedRightHalf.img.traditional.medium} alt="add pizza"></img>
                                     </div>
                                 </div>
                             ) : (
@@ -321,12 +344,3 @@ const ModalHalfPizza = (props: any) => {
 }
 
 export default ModalHalfPizza;
-
-
-/**
- * 
- *     width: 1000px;
-    overflow-y: scroll;
-    position: relative;
-    height: 70vh;
- */

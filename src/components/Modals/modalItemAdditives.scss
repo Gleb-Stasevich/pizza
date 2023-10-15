@@ -27,3 +27,123 @@
         line-height: 20px;
     }
 }
+
+@media (max-width: 991px) {
+    .modal-additives {
+        --bs-modal-width: auto;
+    }
+}
+
+@media (max-width: 907px) {
+    .modal-additives > .modal-dialog > .modal-content > .modal-header {
+        right: 0px;
+        .btn-close {
+            --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23000%27%3e%3cpath d=%27M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z%27/%3e%3c/svg%3e") !important;
+        }
+    }
+
+    .modal-additives {
+        padding-right: 0px;
+        padding-left: 10px;
+    }
+}
+
+@media (max-width: 765px) {
+    .modal-additives > .modal-dialog > .modal-content > .modal-header {
+        right: 0px;
+    }
+}
+
+@media (max-width: 730px) {
+    .modal-item__additives_img > img {
+        width: 235px;
+        height: 235px;
+    }
+}
+
+@media (max-width: 690px) {
+    .modal-additives > .modal-dialog > .modal-content > .modal-header {
+        right: 0px;
+    }
+
+    .media-buy-additives {
+        width: 320px;
+        button {
+            width: 320px;
+        }
+    }
+}
+
+@media (max-width: 625px) {
+    .modal-item__additives-container {
+        flex-direction: column;
+    }
+
+    .modal-item__additives_img {
+        display: flex;
+        justify-content: center;
+    }
+
+    .modal-item__additives-choice {
+        width: 300px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .additives-content {
+        height: 150px;
+        width: 300px;
+    }
+    .media-buy-additives {
+        position: relative;
+        right: 10px;
+    }
+}
+
+@media (max-width: 413px) {
+    .media-buy-additives {
+        width: 300px;
+        right: 4px;
+        button {
+            width: 300px;
+        }
+    }
+}
+
+@media (max-width: 367px) {
+    .media-buy-additives {
+        width: 270px;
+        right: -10px;
+        button {
+            width: 270px;
+            right: 10px;
+        }
+    }
+
+    .additives-content {
+        width: 78vw;
+        height: 200px;
+    }
+}
+@media (max-width: 358px) {
+    .media-buy-additives {
+        button {
+            position: relative;
+            right: 8px !important;
+        }
+    }
+}
+
+@media (max-width: 347px) {
+    .media-buy-additives {
+        width: 250px;
+        left: 0;
+        right: 0;
+        button {
+            width: 250px;
+            font-size: 14.5px;
+            left: 0;
+            right: 0;
+        }
+    }
+}

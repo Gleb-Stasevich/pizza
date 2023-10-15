@@ -1,6 +1,8 @@
+import { TypeCatalogItem } from "../../types/types";
+
 const Beverages = (props: any) => {
 
-    const chooseItem = (item: any) => {
+    const chooseItem = (item: TypeCatalogItem) => {
         props.showModalForAdditives(item);
     }
 
@@ -11,10 +13,10 @@ const Beverages = (props: any) => {
             <div className="catalog-container d-flex flex-wrap justify-content-between align-items-center">
 
                 {
-                    props.beverages.map((item: any, index: number) => {
+                    props.beverages.map((item: TypeCatalogItem, index: number) => {
                         return (
                             <div
-                                className="catalog-block"
+                                className="catalog-block mx-2"
                                 style={(index <= 3) ? { marginBottom: '30px' } : { marginBottom: '0px' }}
                                 onClick={() => chooseItem(item)}
                                 key={item.id}

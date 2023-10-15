@@ -5,6 +5,11 @@
     z-index: 1;
 }
 
+.story-img {
+    width: 191px;
+    height: 239px;
+}
+
 .story-wrap {
     width: 204px;
     height: 252px;
@@ -49,7 +54,7 @@
 .carousel-control-prev-icon {
     width: 14px;
     height: 24px;
-    background-image: url("../../assets/storyCarousel/angle-icon-right.png");
+    background-image: url("./assetsStories/angle-icon-right.png");
 }
 
 .carousel-control-prev-icon {
@@ -58,4 +63,61 @@
 
 .carousel-indicators {
     display: none;
+}
+
+@media (max-width: 1199px) {
+    .story-wrap {
+        width: 171px;
+    }
+    .story-img {
+        width: 158px;
+    }
+}
+
+@media (max-width: 991px) {
+    .story-wrap {
+        width: 133px;
+    }
+    .story-img {
+        left: 1px !important;
+        width: 123px;
+        left: 4px;
+        top: 3px;
+    }
+}
+
+@media (max-width: 768px) {
+    .story {
+        justify-content: center;
+    }
+    .carousel-control-prev {
+        left: 0px;
+    }
+    .story-wrap {
+        width: 171px;
+    }
+    .story-img {
+        width: 158px;
+        left: 4px !important;
+    }
+
+    .story_slice {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .carousel-control-prev {
+        display: none;
+    }
+}
+
+@media (max-width: 473px) {
+    .story-wrap {
+        width: 204px !important;
+    }
+
+    .story-img {
+        width: 191px;
+    }
 }

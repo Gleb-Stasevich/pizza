@@ -66,3 +66,27 @@
 .item-description-bottom {
     height: auto;
 }
+
+.toast {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 10000;
+    width: 250px;
+    color: white;
+    background-color: #413f3f;
+}
+
+@media (max-width: 538px) {
+    .catalog-container {
+        justify-content: center !important;
+    }
+
+    .catalog-title {
+        text-align: center;
+    }
+
+    .catalog-block {
+        width: 250px;
+    }
+}

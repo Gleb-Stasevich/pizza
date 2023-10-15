@@ -1,30 +1,26 @@
-import './carouselOrders.scss';
+import { TypeHoverTranslate, TypePizzaItem, TypeSliderParams } from '../../types/types';
+import { openModalItemConstructor } from '../../actions/actions';
 
-import julienne from '../../assets/storyCarousel/julienne.png';
-import chief from '../../assets/storyCarousel/chief_small.png';
-import carbonara from '../../assets/storyCarousel/carbonara_small.png';
-import dodoMix from '../../assets/storyCarousel/dodo-mix_small.png';
-import pepperoni from '../../assets/storyCarousel/pepperoni_small.png';
-import pastaCarbonara from '../../assets/storyCarousel/pasta-carbonara_small.png';
-import danwid from '../../assets/storyCarousel/danwid-chorizo​-bbq_small.png';
-import pizzaz_2 from '../../assets/storyCarousel/pizzaz-2_small.png';
-import nextSlide from '../../assets/carouselOrders/next-slide.png';
-
-import { useEffect } from 'react';
-import { TypeHoverTranslate, TypeSliderParams } from '../../types/types';
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
-import { openModalItemConstructor } from '../../actions/actions';
-import { useState } from "react";
-import { AnyArray } from 'immer/dist/internal';
 
-const CarouselOrdersG = () => {
+import julienne from './assetsOrders/julienne.png';
+import chief from './assetsOrders/chief_small.png';
+import carbonara from './assetsOrders/carbonara_small.png';
+import dodoMix from './assetsOrders/dodo-mix_small.png';
+import pepperoni from './assetsOrders/pepperoni_small.png';
+import nextSlide from './assetsOrders/next-slide.png';
+
+import './carouselOrders.scss';
+
+const CarouselOrders = () => {
 
     const dispatch = useDispatch();
 
-    let { pizzas } = useSelector((state: RootState) => state);
+    let pizzas = useSelector((state: RootState) => state.pizzas);
 
-    let [sliderItems, setSliderItems] = useState<AnyArray>([]);
+    let [sliderItems, setSliderItems] = useState<HTMLDivElement[]>([]);
 
     let [sliderParams, setSliderParams] = useState<TypeSliderParams>({
         itemOpacityNext: null,
@@ -49,7 +45,7 @@ const CarouselOrdersG = () => {
 
 
     const getSliderItems = async () => {
-        const items = Array.from(document.querySelectorAll<Element>('.often-ordered-item'));
+        const items = Array.from(document.querySelectorAll<HTMLDivElement>('.often-ordered-item'));
         setSliderItems(items);
     }
 
@@ -58,44 +54,37 @@ const CarouselOrdersG = () => {
         const target = document.querySelector('.next-slide');
         const target2 = document.querySelector('.prev-slide');
 
-        const f = (side: any) => {
+        // Event - для добавления addEventListener (слушателей событий mouseover + mouseout)
+        const f = (side: string | Event) => {
             if (side === 'next') {
                 if (document.querySelector('.next')) {
-                    /* @ts-ignore */
-                    document.querySelector('.next')!.style.opacity = 0.3;
+                    document.querySelector<HTMLDivElement>('.next')!.style.opacity = '0.3';
                     if (target) {
-                        /* @ts-ignore */
-                        document.querySelector('.ofter-ordered').style.transform = `translate(${sliderHoverEffects.next}px)`;
+                        document.querySelector<HTMLDivElement>('.ofter-ordered')!.style.transform = `translate(${sliderHoverEffects.next}px)`;
                     }
                 }
             } else if (side === 'prev') {
                 if (document.querySelector('.prev')) {
-                    /* @ts-ignore */
-                    document.querySelector('.prev')!.style.opacity = 0.3;
+                    document.querySelector<HTMLDivElement>('.prev')!.style.opacity = '0.3';
                     if (target2) {
-                        /* @ts-ignore */
-                        document.querySelector('.ofter-ordered').style.transform = `translate(${sliderHoverEffects.next + 40}px)`;
+                        document.querySelector<HTMLDivElement>('.ofter-ordered')!.style.transform = `translate(${sliderHoverEffects.next + 40}px)`;
                     }
                 }
             }
         }
-        const f2 = (side: any) => {
+        const f2 = (side: string | Event) => {
             if (side === 'next') {
                 if (document.querySelector('.next')) {
-                    /* @ts-ignore */
-                    document.querySelector('.next')!.style.opacity = 0.5;
+                    document.querySelector<HTMLDivElement>('.next')!.style.opacity = '0.5';
                     if (target) {
-                        /* @ts-ignore */
-                        document.querySelector('.ofter-ordered').style.transform = `translate(${sliderHoverEffects.nextDefault}px)`;
+                        document.querySelector<HTMLDivElement>('.ofter-ordered')!.style.transform = `translate(${sliderHoverEffects.nextDefault}px)`;
                     }
                 }
             } else if (side === 'prev') {
                 if (document.querySelector('.prev')) {
-                    /* @ts-ignore */
-                    document.querySelector('.prev')!.style.opacity = 0.5;
+                    document.querySelector<HTMLDivElement>('.prev')!.style.opacity = '0.5';
                     if (target) {
-                        /* @ts-ignore */
-                        document.querySelector('.ofter-ordered').style.transform = `translate(${sliderHoverEffects.nextDefault}px)`;
+                        document.querySelector<HTMLDivElement>('.ofter-ordered')!.style.transform = `translate(${sliderHoverEffects.nextDefault}px)`;
                     }
                 }
             }
@@ -112,8 +101,8 @@ const CarouselOrdersG = () => {
     const nextSLide = () => {
 
 
-        const buttonNext = document.querySelector<HTMLElement>('.next-slide');
-        const buttonPrev = document.querySelector<HTMLElement>('.prev-slide');
+        const buttonNext = document.querySelector<HTMLDivElement>('.next-slide');
+        const buttonPrev = document.querySelector<HTMLDivElement>('.prev-slide');
 
         if (sliderParams.counterNext >= sliderParams.maxCountNext) {
             buttonNext!.style.cssText = 'display:none !important';
@@ -128,14 +117,14 @@ const CarouselOrdersG = () => {
             buttonNext!.style.cssText = 'display:flex !important';
             buttonPrev!.style.cssText = 'display:flex !important';
 
-            setSliderParams((state: any) => ({
-                ...state,
-                counterNext: state.counterNext + 1,
-                counterPrev: state.counterPrev === 0 ? state.counterPrev : state.counterPrev - 1,
-                itemOpacityNext: sliderItems[state.itemOpacityIndexNext + 1],
-                itemOpacityIndexNext: state.itemOpacityIndexNext + 1,
-                itemOpacityPrev: sliderItems[state.itemOpacityIndexPrev + 1],
-                itemOpacityIndexPrev: state.itemOpacityIndexPrev + 1
+            setSliderParams((params: TypeSliderParams) => ({
+                ...params,
+                counterNext: params.counterNext + 1,
+                counterPrev: params.counterPrev === 0 ? params.counterPrev : params.counterPrev - 1,
+                itemOpacityNext: sliderItems[params.itemOpacityIndexNext + 1],
+                itemOpacityIndexNext: params.itemOpacityIndexNext + 1,
+                itemOpacityPrev: sliderItems[params.itemOpacityIndexPrev + 1],
+                itemOpacityIndexPrev: params.itemOpacityIndexPrev + 1
             }))
 
             if (sliderParams.itemOpacityIndexNext === sliderItems.length - 1) {
@@ -161,13 +150,13 @@ const CarouselOrdersG = () => {
                 sliderItems[sliderParams.itemOpacityIndexPrev - 1].classList.remove('prev');
             }
         }
-        setSliderHoverEffects((state: any) => ({
-            ...state, next: state.next - 290, nextDefault: state.nextDefault - 290
+        setSliderHoverEffects((effects: TypeHoverTranslate) => ({
+            ...effects, next: effects.next - 290, nextDefault: effects.nextDefault - 290
         }));
-        /* @ts-ignore */
-        document.querySelector('.ofter-ordered').style.transform = `translate(${sliderHoverEffects.next - 270}px)`;
 
-        if (sliderParams.counterNext === 2) { // убираем
+        document.querySelector<HTMLDivElement>('.ofter-ordered')!.style.transform = `translate(${sliderHoverEffects.next - 270}px)`;
+
+        if (sliderParams.counterNext === 2) { // скрываем кнопку если пришли до конца
             let counter = 0;
             for (let elem of sliderItems) {
                 if (elem.classList.contains('next')) {
@@ -177,8 +166,7 @@ const CarouselOrdersG = () => {
                 }
             }
             if (counter === sliderItems.length) {
-                //@ts-ignore
-                document.querySelector('.next-slide').style.cssText = 'display: none !important';
+                document.querySelector<HTMLDivElement>('.next-slide')!.style.cssText = 'display: none !important';
             }
             counter = 0;
         }
@@ -187,8 +175,8 @@ const CarouselOrdersG = () => {
 
     const prevSlide = () => {
 
-        const buttonPrev = document.querySelector<HTMLElement>('.prev-slide');
-        const buttonNext = document.querySelector<HTMLElement>('.next-slide');
+        const buttonPrev = document.querySelector<HTMLDivElement>('.prev-slide');
+        const buttonNext = document.querySelector<HTMLDivElement>('.next-slide');
 
 
         if (sliderParams.counterPrev === sliderParams.maxCountPrev) {
@@ -206,14 +194,14 @@ const CarouselOrdersG = () => {
             }
             buttonNext!.style.cssText = 'display:flex !important';
 
-            setSliderParams((state: any) => ({
-                ...state,
-                counterNext: state.counterNext === 0 ? state.counterNext : state.counterNext - 1,
-                counterPrev: state.counterPrev + 1,
-                itemOpacityNext: sliderItems[state.itemOpacityIndexNext - 1],
-                itemOpacityIndexNext: state.itemOpacityIndexNext - 1,
-                itemOpacityPrev: sliderItems[state.itemOpacityIndexPrev - 1],
-                itemOpacityIndexPrev: state.itemOpacityIndexPrev - 1
+            setSliderParams((params: TypeSliderParams) => ({
+                ...params,
+                counterNext: params.counterNext === 0 ? params.counterNext : params.counterNext - 1,
+                counterPrev: params.counterPrev + 1,
+                itemOpacityNext: sliderItems[params.itemOpacityIndexNext - 1],
+                itemOpacityIndexNext: params.itemOpacityIndexNext - 1,
+                itemOpacityPrev: sliderItems[params.itemOpacityIndexPrev - 1],
+                itemOpacityIndexPrev: params.itemOpacityIndexPrev - 1
             }))
 
             if (sliderParams.itemOpacityIndexPrev === 0) {
@@ -221,32 +209,27 @@ const CarouselOrdersG = () => {
             }
 
             if (sliderItems[sliderParams.itemOpacityIndexPrev - 1].classList.contains('prev')) {
-                console.log('bbbb');
                 sliderItems[sliderParams.itemOpacityIndexPrev - 1].classList.remove('prev');
                 sliderItems[sliderParams.itemOpacityIndexPrev - 1].style.opacity = '1';
+
                 if (sliderItems[sliderParams.itemOpacityIndexPrev - 2]) {
-                    console.log('bbbb');
                     sliderItems[sliderParams.itemOpacityIndexPrev - 2].classList.add('prev');
                     sliderItems[sliderParams.itemOpacityIndexPrev - 2].style.opacity = '0.5';
                 }
-                console.log('bbbb');
                 sliderItems[sliderParams.itemOpacityIndexNext].classList.remove('next');
                 sliderItems[sliderParams.itemOpacityIndexNext - 1].classList.add('next');
                 sliderItems[sliderParams.itemOpacityIndexNext - 1].style.opacity = '0.5';
             } else {
-                console.log('bbbb');
                 sliderItems[sliderParams.itemOpacityIndexNext].classList.add('next');
                 sliderItems[sliderParams.itemOpacityIndexNext].style.opacity = '0.5';
                 sliderItems[sliderParams.itemOpacityIndexPrev].classList.remove('prev');
                 sliderItems[sliderParams.itemOpacityIndexPrev].style.opacity = '1';
                 sliderItems[sliderParams.itemOpacityIndexPrev - 1].classList.add('prev');
                 sliderItems[sliderParams.itemOpacityIndexPrev - 1].style.opacity = '0.5';
-
             }
 
             if (sliderParams.itemOpacityIndexNext !== sliderItems.length - 1) {
                 sliderItems[sliderParams.itemOpacityIndexNext + 1].classList.remove('next');
-                console.log('bbbb');
             }
         }
 
@@ -254,11 +237,10 @@ const CarouselOrdersG = () => {
         // iOIN - увеличивает индекс опасити элеменет на следующтй
         // меняем класс некст у элем
 
-        setSliderHoverEffects((state: any) => ({
-            ...state, next: state.next + 290, nextDefault: state.nextDefault + 290
+        setSliderHoverEffects((effects: TypeHoverTranslate) => ({
+            ...effects, next: effects.next + 290, nextDefault: effects.nextDefault + 290
         }));
-        /* @ts-ignore */
-        document.querySelector('.ofter-ordered').style.transform = `translate(${sliderHoverEffects.next + 310}px)`;
+        document.querySelector<HTMLDivElement>('.ofter-ordered')!.style.transform = `translate(${sliderHoverEffects.next + 310}px)`;
     }
 
     return (
@@ -271,17 +253,19 @@ const CarouselOrdersG = () => {
 
 const View = ({ pizzas, nextSLide, prevSlide, dispatch, getSliderEvents }: any) => {
 
-    const openModalPizza = (e: any) => {
-        const currentItem = e.target.closest('.often-ordered-item').querySelector('.often-ordered-name').textContent;
-        const item = pizzas.find((elem: any) => elem.title === currentItem);
-        dispatch(openModalItemConstructor(item));
+    const openModalPizza = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (e.target instanceof HTMLElement) {
+            const currentItem = e.target.closest('.often-ordered-item')!.querySelector('.often-ordered-name')!.textContent;
+            const item = pizzas.find((elem: TypePizzaItem) => elem.title === currentItem);
+            dispatch(openModalItemConstructor(item));
+        }
     }
 
     return (
         <div className="wrapper position-relative">
             <div onMouseEnter={() => getSliderEvents().f('prev')}
                 onMouseLeave={() => getSliderEvents().f2('prev')}
-                onClick={(e) => prevSlide(e)}
+                onClick={() => prevSlide()}
                 className="prev-slide position-absolute d-flex justify-content-center align-items-center">
                 <img className="next-slide-icon" src={nextSlide} alt="next-slide" />
             </div>
@@ -376,7 +360,7 @@ const View = ({ pizzas, nextSLide, prevSlide, dispatch, getSliderEvents }: any) 
             </div>
             <div onMouseEnter={() => getSliderEvents().f('next')}
                 onMouseLeave={() => getSliderEvents().f2('next')}
-                onClick={(e) => nextSLide()}
+                onClick={() => nextSLide()}
                 className="next-slide position-absolute d-flex justify-content-center align-items-center">
                 <img className="next-slide-icon" src={nextSlide} alt="next-slide" />
             </div>
@@ -384,4 +368,4 @@ const View = ({ pizzas, nextSLide, prevSlide, dispatch, getSliderEvents }: any) 
     )
 }
 
-export default CarouselOrdersG;
+export default CarouselOrders;

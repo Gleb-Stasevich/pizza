@@ -1,9 +1,11 @@
-import logo from '../../assets/dodo-logo.png';
-import ModalPizzerias from '../Modals/ModalPizzerias';
 import { useState, useRef } from "react";
 import { useDispatch } from 'react-redux';
+
+import ModalPizzerias from '../Modals/ModalPizzerias';
 import { setDeliveryCity } from '../../actions/actions';
-import star from './star.png';
+
+import logo from '../Content/assets/dodo-logo.png';
+import star from './assets/star.png';
 import './banner.scss';
 
 const Banner = () => {
@@ -14,10 +16,10 @@ const View = () => {
 
     let dispatch = useDispatch();
 
-    const [showModalPizzerias, setShowModalPizzerias] = useState(false);
+    const [showModalPizzerias, setShowModalPizzerias] = useState<boolean>(false);
     let deliveryCity = useRef<HTMLSpanElement>(null);
 
-    const setDeliveryСity = (key: any, city: any) => {
+    const setDeliveryСity = (key: React.KeyboardEvent, city: string) => {
 
         if (deliveryCity.current && key === undefined) {
             deliveryCity.current!.textContent = city;
@@ -33,12 +35,12 @@ const View = () => {
 
     return (
         <>
-            <div className="banner d-flex align-items-center">
+            <div className="banner d-flex flex-wrap flex-sm-nowrap align-items-center">
 
-                <div className="banner__logotype">
+                <div className="banner__logotype mt-2 mt-sm-0">
                     <a href="#home"><img src={logo} alt="Logotype" /></a>
                 </div>
-                <div className="delivery d-flex justify-content-start align-items-center m-5">
+                <div className="delivery d-flex flex-wrap flex-sm-nowrap justify-content-start align-items-center m-5">
                     <div className="delivery__city">
                         <div>
                             <span className="delivery-span-fw">Доставка пиццы </span>
@@ -57,7 +59,7 @@ const View = () => {
                 </div>
             </div>
             <ModalPizzerias show={showModalPizzerias}
-                setDeliveryСity={(key: any, city: any) => setDeliveryСity(key, city)}
+                setDeliveryСity={(key: React.KeyboardEvent, city: string) => setDeliveryСity(key, city)}
                 onHide={() => setShowModalPizzerias(false)} />
         </>
     )

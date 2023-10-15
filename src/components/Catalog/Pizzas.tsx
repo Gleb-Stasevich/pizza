@@ -1,6 +1,8 @@
+import { TypePizzaItem } from "../../types/types";
+
 const Pizzas = (props: any) => {
 
-    const chooseItem = (item: any) => {
+    const chooseItem = (item: TypePizzaItem) => {
         if (item.title === 'Пицца из половинок') {
             props.showModaForlHalfPizza();
         } else {
@@ -8,18 +10,15 @@ const Pizzas = (props: any) => {
         }
     }
 
-    console.log(props.pizzas[0]?.img?.traditional?.medium);
-
-
     return (
         <div className="pizzas">
             <div className="catalog-title" id="pizzas">Пицца</div>
             <div className="catalog-container d-flex flex-wrap justify-content-between align-items-center">
 
                 {
-                    props.pizzas.map((item: any) => {
+                    props.pizzas.map((item: TypePizzaItem) => {
                         return (
-                            <div onClick={() => chooseItem(item)} key={item.id} className="catalog-block mt-5">
+                            <div onClick={() => chooseItem(item)} key={item.id} className="catalog-block mt-5 mx-2">
                                 <div className="catalog-item-img">
                                     <img src={item.img?.traditional?.medium} alt={item.title} />
                                 </div>
