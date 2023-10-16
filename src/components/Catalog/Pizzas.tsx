@@ -1,14 +1,20 @@
 import { TypePizzaItem } from "../../types/types";
 
-const Pizzas = (props: any) => {
+type Props = {
+    pizzas: TypePizzaItem[],
+    showModaForlHalfPizza: () => void,
+    showModalConstructor: (item: TypePizzaItem) => void
+}
+
+const Pizzas = ({ pizzas, showModaForlHalfPizza, showModalConstructor }: Props) => {
 
     const chooseItem = (item: TypePizzaItem) => {
         if (item.title === 'Пицца из половинок') {
-            props.showModaForlHalfPizza();
+            showModaForlHalfPizza();
         } else {
-            props.showModalConstructor(item);
+            showModalConstructor(item);
         }
-    }
+    };
 
     return (
         <div className="pizzas">
@@ -16,7 +22,7 @@ const Pizzas = (props: any) => {
             <div className="catalog-container d-flex flex-wrap justify-content-between align-items-center">
 
                 {
-                    props.pizzas.map((item: TypePizzaItem) => {
+                    pizzas.map((item: TypePizzaItem) => {
                         return (
                             <div onClick={() => chooseItem(item)} key={item.id} className="catalog-block mt-5 mx-2">
                                 <div className="catalog-item-img">

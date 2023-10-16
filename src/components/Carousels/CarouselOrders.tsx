@@ -55,7 +55,7 @@ const CarouselOrders = () => {
         const target2 = document.querySelector('.prev-slide');
 
         // Event - для добавления addEventListener (слушателей событий mouseover + mouseout)
-        const f = (side: string | Event) => {
+        const mouseOver = (side: string | Event) => {
             if (side === 'next') {
                 if (document.querySelector('.next')) {
                     document.querySelector<HTMLDivElement>('.next')!.style.opacity = '0.3';
@@ -72,7 +72,7 @@ const CarouselOrders = () => {
                 }
             }
         }
-        const f2 = (side: string | Event) => {
+        const mouseOut = (side: string | Event) => {
             if (side === 'next') {
                 if (document.querySelector('.next')) {
                     document.querySelector<HTMLDivElement>('.next')!.style.opacity = '0.5';
@@ -91,12 +91,20 @@ const CarouselOrders = () => {
         }
 
         const addDefaultEvents = () => {
-            target?.addEventListener('mouseover', f);
-            target?.addEventListener('mouseout', f2);
+            target?.addEventListener('mouseover', mouseOver);
+            target?.addEventListener('mouseout', mouseOut);
         }
 
-        return { addDefaultEvents, f, f2 }
+        return { addDefaultEvents, mouseOver, mouseOut }
     }
+
+    /**
+     * Логика по изменению слайдов (2 след.функции) получилась довольно большой, т.к:
+     * Оперировал изменением стейта, чтобы назначать элементам правильные классы и индексы
+     * Т.к. изменения асинхронные, то чтобы получить нужные элементы для изменений (слайды сдвинутся
+     * до обновления стейта) сдвигал индексы (на -1 и +1)
+     * Здесь же и описывал для этих элементов изменения style.opacity 
+     */
 
     const nextSLide = () => {
 
@@ -156,7 +164,7 @@ const CarouselOrders = () => {
 
         document.querySelector<HTMLDivElement>('.ofter-ordered')!.style.transform = `translate(${sliderHoverEffects.next - 270}px)`;
 
-        if (sliderParams.counterNext === 2) { // скрываем кнопку если пришли до конца
+        if (sliderParams.counterNext === 2) { // скрываем кнопку next если пришли до конца слайдера
             let counter = 0;
             for (let elem of sliderItems) {
                 if (elem.classList.contains('next')) {
@@ -233,10 +241,6 @@ const CarouselOrders = () => {
             }
         }
 
-        // iON - делает сначала опасити нект следующий элеменет
-        // iOIN - увеличивает индекс опасити элеменет на следующтй
-        // меняем класс некст у элем
-
         setSliderHoverEffects((effects: TypeHoverTranslate) => ({
             ...effects, next: effects.next + 290, nextDefault: effects.nextDefault + 290
         }));
@@ -263,8 +267,8 @@ const View = ({ pizzas, nextSLide, prevSlide, dispatch, getSliderEvents }: any) 
 
     return (
         <div className="wrapper position-relative">
-            <div onMouseEnter={() => getSliderEvents().f('prev')}
-                onMouseLeave={() => getSliderEvents().f2('prev')}
+            <div onMouseEnter={() => getSliderEvents().mouseOver('prev')}
+                onMouseLeave={() => getSliderEvents().mouseOut('prev')}
                 onClick={() => prevSlide()}
                 className="prev-slide position-absolute d-flex justify-content-center align-items-center">
                 <img className="next-slide-icon" src={nextSlide} alt="next-slide" />
@@ -358,8 +362,8 @@ const View = ({ pizzas, nextSLide, prevSlide, dispatch, getSliderEvents }: any) 
                     </div>
                 </div>
             </div>
-            <div onMouseEnter={() => getSliderEvents().f('next')}
-                onMouseLeave={() => getSliderEvents().f2('next')}
+            <div onMouseEnter={() => getSliderEvents().mouseOver('next')}
+                onMouseLeave={() => getSliderEvents().mouseOut('next')}
                 onClick={() => nextSLide()}
                 className="next-slide position-absolute d-flex justify-content-center align-items-center">
                 <img className="next-slide-icon" src={nextSlide} alt="next-slide" />

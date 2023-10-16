@@ -1,19 +1,26 @@
 import { useSelector, useDispatch } from "react-redux";
+
 import { UpdateListOrders, UpdateAmountOrder, changeModalItem } from "../../actions/actions";
 import { RootState } from "../../store/store";
 
+import { TypeOrder } from "../../types/types";
 import { Modal } from "react-bootstrap";
 import './modalItemAdditives.scss';
 
-const ModalItemAdditives = (props: any) => {
+type Props = {
+    modalItem: any,
+    onHide: () => void,
+    show: boolean,
+    showAddedMessage: (show: string) => void
+}
 
-    const { modalItem, onHide, show } = props;
+const ModalItemAdditives = ({ modalItem, onHide, show, showAddedMessage }: Props) => {
+
     const orders = useSelector((state: RootState) => state.orders);
-
     const dispatch = useDispatch();
 
     const addOrder = () => {
-        props.showAddedMessage(modalItem.title);
+        showAddedMessage(modalItem.title);
 
         const index: number = orders.findIndex(order => order.title === modalItem.title);
         if (index >= 0) {

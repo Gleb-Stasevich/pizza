@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { changeQuantity, changeShowCounter, removeOrder, UpdateListOrders } from '../../actions/actions';
@@ -14,15 +14,19 @@ import addCauses from './assets/add-causes.png';
 import addDodster from './assets/dodster.png';
 import './basket.scss';
 
-const Basket = () => {
-
-    let ordersSum: number = 0;
+const Basket = memo(() => {
 
     const orders = useSelector((state: RootState) => state.orders);
     const causes = useSelector((state: RootState) => state.causes);
 
     const [show, setShow] = useState<boolean>(false);
     const [showSauces, setShowSauces] = useState<boolean>(false);
+    const [ordersSum, setOrdersSum] = useState<number>(0);
+    const [ordersCount, setOrdersCount] = useState<number>(0);
+
+    useEffect(() => {
+        getOrdersTotal();
+    }, [orders])
 
     const dispatch = useDispatch();
 
@@ -43,13 +47,13 @@ const Basket = () => {
         document.querySelector<HTMLDivElement>('.additive-dodster')!.classList.remove('dark-orders');
         document.querySelector<HTMLDivElement>('.additive-order-block')!.classList.remove('dark-orders');
         document.querySelector<HTMLDivElement>('.img-add-causes')!.classList.remove('dark-orders-img');
-    }
+    };
 
     const handleShow = () => {
         setShow(true);
         document.querySelector('html')!.style.overflowY = 'hidden';
     }
-    const handleShowSauces = (button: any) => {
+    const handleShowSauces = () => {
         document.querySelector<HTMLDivElement>('.canvas')!.classList.add('dark-orders');
         for (let order of document.querySelectorAll('.order')) {
             order.classList.add('dark-orders');
@@ -116,14 +120,22 @@ const Basket = () => {
         }
     }
 
-    let getSum: number = 0;
+    const getOrdersTotal = () => {
+        let getSum: number = 0;
+        let getCount: number = 0;
 
-    orders.map((order: TypeCause) => {
-        getSum += order.price * order.quantity;
-    });
-    ordersSum = getSum;
-    getSum = 0;
+        orders.map((order: TypeOrder) => {
+            if (order.quantity) {
+                getSum += order.price * order.quantity;
+                getCount += order.quantity;
+            }
+        });
 
+        setOrdersSum(getSum);
+        setOrdersCount(getCount);
+        getSum = 0;
+        getCount = 0;
+    }
 
     return (
         <>
@@ -146,10 +158,10 @@ const Basket = () => {
                         <Offcanvas.Body className="orders-list position-relative">
                             <img onClick={() => handleClose()} src={closeModalBasket} className="position-absolute close-modal-basket"></img>
                             <div className="offcanvas__title pt-3 px-3">
-                                <span>{orders.length}
+                                <span>{ordersCount}
                                     {
-                                        (orders.length === 1) ? ' товар '
-                                            : (orders.length > 1 && orders.length < 5) ? ' товара '
+                                        (ordersCount === 1) ? ' товар '
+                                            : (ordersCount > 1 && orders.length < 5) ? ' товара '
                                                 : ' товаров '
                                     }
                                     на сумму {(ordersSum).toFixed(2)}
@@ -265,6 +277,6 @@ const Basket = () => {
             </Offcanvas>
         </>
     )
-}
+});
 
 export default Basket;

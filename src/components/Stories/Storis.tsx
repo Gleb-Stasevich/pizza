@@ -18,9 +18,13 @@ import story9 from './stories-backgrounds/story-9.png';
 
 import './stories.scss';
 
-const Stories = (props: any) => {
+type Props = {
+    show: boolean,
+    indexStory: number,
+    onHide: () => void
+}
 
-    const { onHide, show } = props;
+const Stories = ({ show, indexStory, onHide }: Props) => {
 
     const [index, setIndex] = useState<number>(0);
     const [counter, setCounter] = useState<number>(0);
@@ -35,16 +39,16 @@ const Stories = (props: any) => {
 
     useEffect(() => {
 
-        if (props.show === true) {
+        if (show === true) {
             resetCounter();
             setCounter(0);
             setTimeout(() => { incrementCounter() }, 0);
-        } else if (props.show === false) {
+        } else if (show === false) {
             resetCounter();
             setCounter(0);
         }
 
-    }, [props.show, index]);
+    }, [show, index]);
 
     useEffect(() => {
         if (counter === 100) {
@@ -60,8 +64,8 @@ const Stories = (props: any) => {
 
     useEffect(() => {
 
-        handleSelect(props.indexStory);
-    }, [props.indexStory]);
+        handleSelect(indexStory);
+    }, [indexStory]);
 
     const incrementCounter = () => {
         intervalRef.current = setInterval(() => {
@@ -77,7 +81,7 @@ const Stories = (props: any) => {
     return (
         <>
             {
-                props.show === true ? (
+                show === true ? (
                     <>
                         <img className="stories-background position-absolute" src={background} alt="smth"></img>
                         <Modal className="modal-stories"
