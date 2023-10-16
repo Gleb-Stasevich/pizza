@@ -15,9 +15,13 @@ import returnIngred from './assets/return.png';
 import './modalHalfPizza.scss';
 import { TypeHalfPizza, TypePizzaItem } from "../../types/types";
 
-const ModalHalfPizza = (props: any) => {
+type Props = {
+    onHide: () => void,
+    show: boolean,
+    showAddedMessage: (show: string) => void
+}
 
-    const { onHide, show } = props;
+const ModalHalfPizza = ({ onHide, show, showAddedMessage }: Props) => {
 
     let pizzas = useSelector((state: RootState) => state.pizzas);
     let [choosedLeftHalf, setChoosedLeftHalf] = useState<null | any>(null);
@@ -118,7 +122,7 @@ const ModalHalfPizza = (props: any) => {
     }
 
     const addPizza = () => {
-        props.showAddedMessage(choosedLeftHalf.title + ' + ' + choosedRightHalf.title);
+        showAddedMessage(choosedLeftHalf.title + ' + ' + choosedRightHalf.title);
         let ingredsButtons = document.querySelectorAll('.return');
         let ingreds: string[] = [];
         for (let ingred of ingredsButtons) {

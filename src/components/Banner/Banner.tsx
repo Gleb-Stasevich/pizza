@@ -19,14 +19,14 @@ const View = () => {
     const [showModalPizzerias, setShowModalPizzerias] = useState<boolean>(false);
     let deliveryCity = useRef<HTMLSpanElement>(null);
 
-    const setDeliveryСity = (key: React.KeyboardEvent, city: string) => {
+    const setDeliveryСity = (key: React.KeyboardEvent | undefined, city: string) => {
 
         if (deliveryCity.current && key === undefined) {
             deliveryCity.current!.textContent = city;
             setShowModalPizzerias(false);
             dispatch(setDeliveryCity(city));
 
-        } else if (key.key === 'Enter') {
+        } else if (key!.key === 'Enter') {
             deliveryCity.current!.textContent = city;
             setShowModalPizzerias(false);
             dispatch(setDeliveryCity(city));
@@ -59,7 +59,7 @@ const View = () => {
                 </div>
             </div>
             <ModalPizzerias show={showModalPizzerias}
-                setDeliveryСity={(key: React.KeyboardEvent, city: string) => setDeliveryСity(key, city)}
+                setDeliveryСity={(key: React.KeyboardEvent<Element> | undefined, city: string) => setDeliveryСity(key, city)}
                 onHide={() => setShowModalPizzerias(false)} />
         </>
     )

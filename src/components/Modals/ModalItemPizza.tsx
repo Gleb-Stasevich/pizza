@@ -11,15 +11,21 @@ import checkedIcon from './assets/checked-icon.png';
 
 import './modalItem.scss';
 
-const ModalItemPizza = (props: any) => {
+type Props = {
+    additives: TypeAdditiveItem[],
+    modalItem: any,
+    onHide: () => void,
+    show: boolean,
+    showAddedMessage: (show: string) => void
+}
 
-    const dispatch = useDispatch();
-
-    const { additives, modalItem, onHide, show } = props;
+const ModalItemPizza = ({ additives, modalItem, onHide, show, showAddedMessage }: Props) => {
 
     let selectedSize = useSelector((state: RootState) => state.modalItem?.selectedSize);
     let selectedDough = useSelector((state: RootState) => state.modalItem?.selectedDough);
     let orders = useSelector((state: RootState) => state.orders);
+
+    const dispatch = useDispatch();
 
     const removeIngred = (e: React.MouseEvent<HTMLButtonElement>) => {
 
@@ -130,7 +136,7 @@ const ModalItemPizza = (props: any) => {
     }
 
     const addOrder = () => {
-        props.showAddedMessage(modalItem.title);
+        showAddedMessage(modalItem.title);
 
         let id: number = Math.random();
         let modalItemJSON: string = JSON.stringify(modalItem);

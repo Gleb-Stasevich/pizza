@@ -8,9 +8,14 @@ import logo from '../../components/Content/assets/dodo-logo.png';
 
 import './modalItemPizzerias.scss';
 
-const ModalPizzerias = (props: any) => {
+type Props = {
+    show: boolean,
+    setDeliveryСity: (key: React.KeyboardEvent | undefined, city: string) => void,
+    onHide: () => void
+}
 
-    const { onHide, show } = props;
+const ModalPizzerias = ({ show, setDeliveryСity, onHide }: Props) => {
+
     let pizzerias = useSelector((state: RootState) => state.pizzerias);
     return (
         <>
@@ -37,9 +42,9 @@ const ModalPizzerias = (props: any) => {
                                 pizzerias.map((elem: TypePizzerias, index: number) => {
                                     if (index < 6) {
                                         return (
-                                            <div key={elem.id} onClick={() => { props.setDeliveryСity(undefined, elem.city) }} className="city position-relative">
+                                            <div key={elem.id} onClick={() => { setDeliveryСity(undefined, elem.city) }} className="city position-relative">
                                                 {elem.letter ? <span className="first-letter position-absolute">{elem.letter}</span> : null}
-                                                <span className="px-4 city-name" tabIndex={0} onKeyDown={(key) => { props.setDeliveryСity(key, elem.city) }}>{elem.city}</span>
+                                                <span className="px-4 city-name" tabIndex={0} onKeyDown={(key) => { setDeliveryСity(key, elem.city) }}>{elem.city}</span>
                                             </div>
                                         )
                                     }
@@ -51,10 +56,10 @@ const ModalPizzerias = (props: any) => {
                                 pizzerias.map((elem: TypePizzerias, index: number) => {
                                     if (index >= 6 && index < 12) {
                                         return (
-                                            <div key={elem.id} onClick={() => { props.setDeliveryСity(undefined, elem.city) }} className="city position-relative">
+                                            <div key={elem.id} onClick={() => { setDeliveryСity(undefined, elem.city) }} className="city position-relative">
 
                                                 {elem.letter ? <span className="first-letter position-absolute">{elem.letter}</span> : null}
-                                                <span className="px-4 city-name" tabIndex={0} onKeyDown={(key) => { props.setDeliveryСity(key, elem.city) }}>{elem.city}</span>
+                                                <span className="px-4 city-name" tabIndex={0} onKeyDown={(key) => { setDeliveryСity(key, elem.city) }}>{elem.city}</span>
                                             </div>
                                         )
                                     }
@@ -66,9 +71,9 @@ const ModalPizzerias = (props: any) => {
                                 pizzerias.map((elem: TypePizzerias, index: number) => {
                                     if (index >= 12 && index <= 18) {
                                         return (
-                                            <div key={elem.id} onClick={() => { props.setDeliveryСity(undefined, elem.city) }} className="city position-relative">
+                                            <div key={elem.id} onClick={() => { setDeliveryСity(undefined, elem.city) }} className="city position-relative">
                                                 {elem.letter ? <span className="first-letter position-absolute">{elem.letter}</span> : null}
-                                                <span className="px-4 city-name" tabIndex={0} onKeyDown={(key) => { props.setDeliveryСity(key, elem.city) }}>
+                                                <span className="px-4 city-name" tabIndex={0} onKeyDown={(key) => { setDeliveryСity(key, elem.city) }}>
                                                     {elem.city}
                                                 </span>
                                             </div>
