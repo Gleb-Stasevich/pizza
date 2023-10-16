@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/pizza/static/css/main.4e587e5d.css",
+    "main.js": "/pizza/static/js/main.c4c0df88.js",
+    "static/media/story-1.png": "/pizza/static/media/story-1.ab8f7d7b39cd9f63cf10.png",
+    "static/media/story-5.png": "/pizza/static/media/story-5.faf8f99b581487f2674e.png",
+    "static/media/story-3.png": "/pizza/static/media/story-3.e87b56c7453dd8b0e434.png",
+    "static/media/story-8.png": "/pizza/static/media/story-8.63f2774f1ab979bed7a3.png",
+    "static/media/story-7.png": "/pizza/static/media/story-7.22b7db4ced3b28d01b10.png",
+    "static/media/story-2.png": "/pizza/static/media/story-2.f64db6206fba4c0c7796.png",
+    "static/media/story-4.png": "/pizza/static/media/story-4.f0055c44ff76e8e15a76.png",
+    "static/media/story-carousel-4.png": "/pizza/static/media/story-carousel-4.7211fdd0551aa6a36476.png",
+    "static/media/story-carousel-5.png": "/pizza/static/media/story-carousel-5.21677df1c9f1f8e16f2a.png",
+    "static/media/story-carousel-1.png": "/pizza/static/media/story-carousel-1.3b17bcb3149850cd5af7.png",
+    "static/media/story-carousel-8.png": "/pizza/static/media/story-carousel-8.baadbace3e86c42f0368.png",
+    "static/media/story-carousel-3.png": "/pizza/static/media/story-carousel-3.ad2bdd0c254e58339fc6.png",
+    "static/media/story-carousel-2.png": "/pizza/static/media/story-carousel-2.59a3690473f3fa81cdbd.png",
+    "static/media/story-6.png": "/pizza/static/media/story-6.c4df32fb74df1f762a1d.png",
+    "static/media/story-carousel-9.png": "/pizza/static/media/story-carousel-9.2e936b2efa8babffe0d6.png",
+    "static/media/story-carousel-7.png": "/pizza/static/media/story-carousel-7.d44017ad5dc627e41ad2.png",
+    "static/media/story-carousel-6.png": "/pizza/static/media/story-carousel-6.5866a1ca6d28a9fc7111.png",
+    "static/media/story-9.png": "/pizza/static/media/story-9.25d80f5040d42fe2985d.png",
+    "static/media/empty.png": "/pizza/static/media/empty.955edd17ea0beb4cbfb5.png",
+    "static/media/chief_small.png": "/pizza/static/media/chief_small.7afbbef49e680fa5e0ce.png",
+    "static/media/carbonara_small.png": "/pizza/static/media/carbonara_small.235c67d808863dd06239.png",
+    "static/media/dodo-mix_small.png": "/pizza/static/media/dodo-mix_small.1ebd6ff09da40477fe02.png",
+    "static/media/julienne.png": "/pizza/static/media/julienne.08bcd429c8ad573ffe47.png",
+    "static/media/pepperoni_small.png": "/pizza/static/media/pepperoni_small.7d099b6c75892824c83d.png",
+    "static/media/dodster.png": "/pizza/static/media/dodster.26a87a2dacbf049dee85.png",
+    "index.html": "/pizza/index.html",
+    "main.4e587e5d.css.map": "/pizza/static/css/main.4e587e5d.css.map",
+    "main.c4c0df88.js.map": "/pizza/static/js/main.c4c0df88.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4e587e5d.css",
+    "static/js/main.c4c0df88.js"
+  ]
+}
