@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/pizza/static/css/main.4e587e5d.css",
-    "main.js": "/pizza/static/js/main.45705379.js",
+    "main.css": "/pizza/static/css/main.6ceebbe0.css",
+    "main.js": "/pizza/static/js/main.c4c0df88.js",
     "static/media/story-1.png": "/pizza/static/media/story-1.ab8f7d7b39cd9f63cf10.png",
     "static/media/story-5.png": "/pizza/static/media/story-5.faf8f99b581487f2674e.png",
     "static/media/story-3.png": "/pizza/static/media/story-3.e87b56c7453dd8b0e434.png",
@@ -28,11 +28,11 @@
     "static/media/pepperoni_small.png": "/pizza/static/media/pepperoni_small.7d099b6c75892824c83d.png",
     "static/media/dodster.png": "/pizza/static/media/dodster.26a87a2dacbf049dee85.png",
     "index.html": "/pizza/index.html",
-    "main.4e587e5d.css.map": "/pizza/static/css/main.4e587e5d.css.map",
-    "main.45705379.js.map": "/pizza/static/js/main.45705379.js.map"
+    "main.6ceebbe0.css.map": "/pizza/static/css/main.6ceebbe0.css.map",
+    "main.c4c0df88.js.map": "/pizza/static/js/main.c4c0df88.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e587e5d.css",
-    "static/js/main.45705379.js"
+    "static/css/main.6ceebbe0.css",
+    "static/js/main.c4c0df88.js"
   ]
 }
