@@ -37,14 +37,17 @@ const reducer = createReducer(initialState, (builder: any) => {
         state.loadingStatus = 'loading';
     })
         .addCase(dataFetched, (state: TypeReducerState, action: any) => {
-            state.pizzas = action.payload.pizzas;
-            state.snacks = action.payload.snacks;
-            state.beverages = action.payload.beverages;
-            state.additives = action.payload.additives;
-            state.causes = action.payload.causes;
-            state.pizzerias = action.payload.pizzerias;
+
+            const data = action.payload.data || action.payload;
+
+            state.pizzas = data.pizzas;
+            state.snacks = data.snacks;
+            state.beverages = data.beverages;
+            state.additives = data.additives;
+            state.causes = data.causes;
+            state.pizzerias = data.pizzerias;
             state.loadingStatus = 'success';
-            state.stories = action.payload.stories;
+            state.stories = data.stories;
         })
         .addCase(dataFetcingError, (state: TypeReducerState) => {
             state.loadingStatus = 'error';

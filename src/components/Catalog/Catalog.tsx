@@ -50,7 +50,12 @@ const Catalog = () => {
 
     const getDataCatalog = useCallback(async () => {
         dispatch(dataFetching());
-        await request('http://localhost:3001/data').then(result => dispatch(dataFetched(result)))
+
+        const path = process.env.NODE_ENV === 'development'
+            ? 'http://localhost:3001/data'
+            : 'https://raw.githubusercontent.com/Gleb-Stasevich/pizza/master/catalog.json'
+
+        await request(path).then(result => dispatch(dataFetched(result)))
             .catch(e => dispatch(dataFetcingError(e)));
     }, []);
 
