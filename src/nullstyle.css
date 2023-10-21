@@ -10,3 +10,8 @@
 html, body {
   overflow-x: hidden;
 }
+
+  /* Для нормального отображения на моб. устройтсв */
+.modal-backdrop {
+  height: 120vh !important;
+}
