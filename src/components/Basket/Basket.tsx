@@ -144,6 +144,7 @@ const Basket = memo(() => {
                 {(orders.length === 0) ?
                     (
                         <Offcanvas.Body className="d-flex flex-column justify-content-center align-items-center">
+                            <img onClick={() => handleClose()} src={closeModalBasket} className="position-absolute close-modal-basket"></img>
                             <img src={empty} alt="empty" />
                             <div className="offcanvas__title pt-3">
                                 <span>Ой, пусто!</span>
