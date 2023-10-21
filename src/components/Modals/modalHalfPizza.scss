@@ -285,9 +285,27 @@
     .half-pizza__add-half {
         width: 312px;
     }
+    .half-pizza__pizzas,
+    .half-pizza__add-half {
+        height: auto;
+    }
+
+    .modal-body-half-pizza {
+        background: white;
+        border-radius: 12px;
+    }
+
+    .media-modal-half-close {
+        top: 40px;
+        right: 5px;
+    }
 }
 
 @media (max-width: 356px) {
+    .modal-half-pizza > .modal-dialog > .modal-content {
+        height: auto;
+    }
+
     .modal-body-half-pizza {
         width: 320px;
     }
@@ -324,13 +342,14 @@
     }
 
     .media-modal-half-close {
-        top: 60px;
+        top: 45px;
         right: 15px;
     }
 }
 
 @media (max-width: 340px) {
-    .half-pizza__choosed-ingreds > .close {
+    .half-pizza__choosed-ingreds > .close,
+    .half-pizza__choosed-ingreds > .return {
         display: inline;
     }
     .half-pizza__add-half > .modal-item__buy > button {

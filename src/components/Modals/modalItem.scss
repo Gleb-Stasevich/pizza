@@ -103,6 +103,7 @@ div::-webkit-scrollbar-thumb {
         cursor: pointer;
         background: none;
         border: none;
+        color: black;
     }
 }
 
@@ -203,11 +204,13 @@ div::-webkit-scrollbar-thumb {
     &__title {
         font-size: 12px;
         line-height: 16px;
+        color: black;
     }
 
     &__price {
         font-weight: 500;
         line-height: 20px;
+        color: black;
     }
 }
 
@@ -342,6 +345,15 @@ div::-webkit-scrollbar-thumb {
         width: 310px;
     }
 
+    .additive {
+        width: 80px;
+    }
+
+    .additive__img > img {
+        width: 70px;
+        height: 70px;
+    }
+
     .media-modal-pizza > .modal-dialog > .modal-content {
         width: 320px;
         margin: auto;
@@ -350,6 +362,12 @@ div::-webkit-scrollbar-thumb {
 
     .additives {
         justify-content: center;
+        height: auto;
+    }
+
+    .checked-icon {
+        width: 25px !important;
+        height: 25px !important;
     }
 
     .media-buy-pizza {
@@ -361,9 +379,6 @@ div::-webkit-scrollbar-thumb {
 }
 
 @media (max-width: 383px) {
-    // html {
-    //     overflow-y: hidden;
-    // }
     .modal {
         --bs-modal-margin: 0rem;
     }
